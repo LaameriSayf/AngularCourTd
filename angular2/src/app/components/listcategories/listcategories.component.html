@@ -1,0 +1,22 @@
+<div class="container">
+  Search :
+  <input type="text" 
+         [(ngModel)]="title" 
+         class="form-control"
+         name="title"
+         style="margin-bottom: 30px;">
+
+  <div class="row">
+    <ng-container *ngFor="let c of filterCategories()">
+      <div class="col-md-4" style="margin-bottom: 20px;">
+        <img [src]="c.image" 
+             [alt]="c.title" 
+             class="img-fluid h-50 w-75" 
+             (click)="afficheDesc(c.id)">
+        <h3>{{ c.title | uppercase }}</h3>
+        <button class="btn btn-primary" *ngIf="c.available">Voir produits</button>
+        <p *ngIf="!c.available">No product</p>
+      </div>
+    </ng-container>
+  </div>
+</div>
